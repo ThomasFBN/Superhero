@@ -9,7 +9,7 @@ public class Database {
         superhelteListe.add(new Superhero(navn, ægteNavn, superKræft, oprettelsesÅr, erMenneske, styrke));
     }
 
-    public void printAntalSuperhelte() {
+    public void printAntalSuperhero() {
         System.out.println(superhelteListe.size());
     }
 
