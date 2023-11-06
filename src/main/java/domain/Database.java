@@ -3,26 +3,26 @@ package domain;
 import java.util.ArrayList;
 
 public class Database {
-    ArrayList<Superhero> superhelteListe = new ArrayList<>();
+    ArrayList<Superhero> superheroList = new ArrayList<>();
 
-    public void addSuperhero(String navn, String ægteNavn, String superKræft, int oprettelsesÅr, boolean erMenneske, String styrke) {
-        superhelteListe.add(new Superhero(navn, ægteNavn, superKræft, oprettelsesÅr, erMenneske, styrke));
+    public void createSuperhero(String navn, String ægteNavn, String superKræft, int oprettelsesÅr, boolean erMenneske, String styrke) {
+        superheroList.add(new Superhero(navn, ægteNavn, superKræft, oprettelsesÅr, styrke, erMenneske));
     }
 
     public void printAntalSuperhero() {
-        System.out.println(superhelteListe.size());
+        System.out.println(superheroList.size());
     }
 
     public void printAlleSuperhero() {
-        for (Superhero superhelt : superhelteListe) {
+        for (Superhero superhelt : superheroList) {
             System.out.println(superhelt);
         }
-        System.out.println("Antal superhelte: " + superhelteListe.size());
+        System.out.println("Antal superhelte: " + superheroList.size());
     }
 
     public ArrayList<Superhero> search(String søgeOrd) {
         ArrayList<Superhero> søgeResultat = new ArrayList<>();
-        for (Superhero superhero : superhelteListe) {
+        for (Superhero superhero : superheroList) {
             String name = superhero.getNavn().toLowerCase();
             if (name.contains(søgeOrd.toLowerCase())) {
                 søgeResultat.add(superhero);
@@ -56,7 +56,7 @@ public class Database {
 
         if (!søgeResultat.isEmpty()) {
             Superhero superhelt = søgeResultat.get(0);
-            superhelteListe.remove(superhelt);
+            superheroList.remove(superhelt);
             System.out.println("Superhelten '" + superheroName + "' er blevet slettet.");
         } else {
             System.out.println("Superhelten med navnet '" + superheroName + "' blev ikke fundet.");
@@ -65,7 +65,10 @@ public class Database {
 
 
     public ArrayList<Superhero> getSuperheroes() {
-        return superhelteListe;
+        return superheroList;
+    }
+    public void addSuperhero(Superhero superhero){
+        superheroList.add(superhero);
     }
 
 }

@@ -8,7 +8,7 @@ public class Superhero {
     private String styrke;
     private boolean erMenneske;
 
-    public Superhero(String navn, String ægteNavn, String superKræft, int oprettelsesÅr, boolean erMenneske, String styrke) {
+    public Superhero(String navn, String ægteNavn, String superKræft, int oprettelsesÅr, String styrke, Boolean erMenneske) {
         this.navn = navn;
         this.ægteNavn = ægteNavn;
         this.superKræft = superKræft;

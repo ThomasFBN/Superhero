@@ -1,12 +1,17 @@
 package domain;
 
+import datasource.FileHandler;
+
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Controller {
     private Database database;
+    private FileHandler filehandler;
 
     public Controller() {
         database = new Database();
+        filehandler = new FileHandler(database);
 
     }
 
@@ -31,7 +36,14 @@ public class Controller {
     }
 
     public void addSuperhero(String navn, String ægteNavn, String superKræft, int oprettelsesÅr, boolean erMenneske, String styrke) {
-        database.addSuperhero(navn, ægteNavn, superKræft, oprettelsesÅr, erMenneske, styrke);
+        database.createSuperhero(navn, ægteNavn, superKræft, oprettelsesÅr, erMenneske, styrke);
+    }
+
+    public void saveSuperhero() throws FileNotFoundException {
+        filehandler.saveSuperhero();
+    }
+    public void loadSuperhero() throws FileNotFoundException {
+        filehandler.loadSuperhero();
     }
 
 }
