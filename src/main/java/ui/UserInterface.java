@@ -3,6 +3,7 @@ package ui;
 import domain.Controller;
 import domain.Superhero;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -23,6 +24,8 @@ public class UserInterface {
                     "\nTast 4 for at søge efter en oprettet superhelt" +
                     "\nTast 5 for at redigere i en oprettet superhelt" +
                     "\nTast 6 for at slette en superhelt" +
+                    "\nTast 7 for at gemme superhelte i fil" +
+                    "\nTast 8 for at load listen" +
                     "\nTast 9 for at afslutte.");
             menuValg = scanner.nextInt();
             scanner.nextLine();
@@ -49,6 +52,15 @@ public class UserInterface {
                     deleteSuperhero();
                     break;
                 }
+                case 7: {
+                    try {
+                        controller.saveSuperhero();
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                }
+
                 case 9: {
                     System.out.println("System exit.");
                     break;
