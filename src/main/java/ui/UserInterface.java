@@ -113,8 +113,6 @@ public class UserInterface {
 
     public void printAllSuperhero() {
         controller.printAlleSuperhero();
-        System.out.println("Du har indtil videre oprettet så mange superhelte: ");
-        controller.printAntalSuperhero();
     }
 
     public void serachForSuperheroes() {
@@ -189,6 +187,39 @@ public class UserInterface {
         System.out.println("Indtast navnet på superhelten, du vil slette: ");
         String superheroNameToDelete = scanner.nextLine();
         controller.deleteSuperhero(superheroNameToDelete);
+    }
+
+    public void sorteretSuperhelte(){
+        System.out.println("Tast 1 for at sortere primært efter navn");
+        System.out.println("Tast 2 for at sortere primært efter ægte navn");
+        System.out.println("Tast 3 for at sortere primært efter superkraft");
+        System.out.println("Tast 4 for at sortere primært efter oprettelsesår");
+        System.out.println("Tast 5 for at sortere primært efter styrke");
+        System.out.println("Tast 6 for at sortere primært efter erMenneske");
+        int choice;
+        while (!scanner.hasNextInt()) {
+            System.out.println("Input a number");
+            scanner.nextLine();
+        }
+        choice = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Tast 1 for at sortere sekundært efter navn");
+        System.out.println("Tast 2 for at sortere sekundært efter ægte navn");
+        System.out.println("Tast 3 for at sortere sekundært efter superkraft");
+        System.out.println("Tast 4 for at sortere sekundært efter oprettelsesår");
+        System.out.println("Tast 5 for at sortere sekundært efter styrke");
+        System.out.println("Tast 6 for at sortere sekundært efter erMenneske");
+        int secondChoice;
+        while (!scanner.hasNextInt()) {
+            System.out.println("Input a number");
+            scanner.nextLine();
+        }
+        secondChoice = scanner.nextInt();
+        scanner.nextLine();
+        controller.sortering(choice, secondChoice);
+        controller.compare();
+        printAllSuperhero();
+
     }
 }
 

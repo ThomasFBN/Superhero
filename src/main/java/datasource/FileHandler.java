@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class FileHandler {
@@ -36,7 +37,7 @@ public class FileHandler {
                     superhero.getErMenneske());
 
         }
-        System.out.println(database.getSuperheroes() + "names saved");
+        System.out.println("List saved");
     }
 
     public ArrayList<Superhero> loadSuperhero() {
