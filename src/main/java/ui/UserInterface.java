@@ -20,12 +20,11 @@ public class UserInterface {
         while (menuValg != 9) {
             System.out.println("Velkommen til SUPERHERO UNIVERSET." +
                     "\nTast 1 for at oprette en ny superhelt." +
+                    "\nTast 2 for at søge efter en oprettet superhelt" +
                     "\nTast 3 for at printe din superhelte-database" +
-                    "\nTast 4 for at søge efter en oprettet superhelt" +
+                    "\nTast 4 for at printe din superhelte-database sorteret" +
                     "\nTast 5 for at redigere i en oprettet superhelt" +
                     "\nTast 6 for at slette en superhelt" +
-                    "\nTast 7 for at gemme superhelte i fil" +
-                    "\nTast 8 for at load listen" +
                     "\nTast 9 for at afslutte.");
             menuValg = scanner.nextInt();
             scanner.nextLine();
@@ -34,6 +33,11 @@ public class UserInterface {
             switch (menuValg) {
                 case 1: {
                     createSuperhero();
+                    saveSuperhero();
+                    break;
+                }
+                case 2: {
+                    serachForSuperheroes();
                     break;
                 }
                 case 3: {
@@ -41,23 +45,21 @@ public class UserInterface {
                     break;
                 }
                 case 4: {
-                    serachForSuperheroes();
-                    break;
+                  sorteretSuperhelte();
+                  break;
+
                 }
+
                 case 5: {
                     editSuperhero();
+                    saveSuperhero();
+
                     break;
                 }
                 case 6: {
                     deleteSuperhero();
-                    break;
-                }
-                case 7: {
-                    try {
-                        controller.saveSuperhero();
-                    } catch (FileNotFoundException e) {
-                        throw new RuntimeException(e);
-                    }
+                    saveSuperhero();
+
                     break;
                 }
 
@@ -173,11 +175,14 @@ public class UserInterface {
             System.out.println("Indtast ny styrke: ");
             String nyStyrke = scanner.nextLine();
 
-            // Kald editSuperhero-metoden i databasen for at opdatere superhelten
             controller.editSuperhero(superheroName, nytNavn, nytÆgteNavn, nySuperKræft, nytOprettelsesÅr, erMenneske, nyStyrke);
         } else {
             System.out.println("Superhelten med navnet '" + superheroName + "' blev ikke fundet.");
         }
+    }
+
+    public void saveSuperhero() {
+        controller.saveSuperhero();
     }
 
     public void deleteSuperhero() {

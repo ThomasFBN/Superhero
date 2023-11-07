@@ -7,11 +7,9 @@ import java.util.ArrayList;
 
 public class Controller {
     private Database database;
-    private FileHandler filehandler;
 
     public Controller() {
         database = new Database();
-        filehandler = new FileHandler(database);
 
     }
 
@@ -39,11 +37,21 @@ public class Controller {
         database.createSuperhero(navn, ægteNavn, superKræft, oprettelsesÅr, erMenneske, styrke);
     }
 
-    public void saveSuperhero() throws FileNotFoundException {
-        filehandler.saveSuperhero();
+    public void saveSuperhero() {
+        database.saveSuperhero();
     }
+
     public void loadSuperhero() throws FileNotFoundException {
-        filehandler.loadSuperhero();
+        database.loadSuperhero();
+    }
+    public void sortering(int primary, int secondary){
+        database.sortering(primary, secondary);
+    }
+    public void compare(){
+        database.compare();
+    }
+    public void getSuperheroes(){
+        database.getSuperheroes();
     }
 
 }

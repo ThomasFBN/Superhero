@@ -1,6 +1,5 @@
 package datasource;
 
-
 import domain.Database;
 import domain.Superhero;
 
@@ -14,17 +13,24 @@ import java.util.Scanner;
 
 public class FileHandler {
     Database database;
+    private File file = null;
 
-    public FileHandler(Database database) {
-        this.database = database;
+    public FileHandler(String fileName){
+        file = new File(fileName);
     }
 
-    public void saveSuperhero() throws FileNotFoundException {
-        PrintStream output = new PrintStream(new File("Superhero.csv"));
-        for (Superhero superhero : database.getSuperheroes()) {
+    public void saveSuperhero(ArrayList<Superhero> superheroesList) {
+        PrintStream output = null;
+        try {
+            //output = new PrintStream(new File("Superhero.csv"));
+            output = new PrintStream(file);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        for (Superhero superhero : superheroesList) {
             output.println(superhero.getNavn() + ";" +
                     superhero.getÆgteNavn() + ";" +
-                    superhero.getSuperKræft() + ";" +
+                    superhero.getSuperkraft() + ";" +
                     superhero.getOprettelsesÅr() + ";" +
                     superhero.getStyrke() + ";" +
                     superhero.getErMenneske());
@@ -33,11 +39,11 @@ public class FileHandler {
         System.out.println(database.getSuperheroes() + "names saved");
     }
 
-    public void loadSuperhero() throws FileNotFoundException {
+    public ArrayList<Superhero> loadSuperhero() {
         ArrayList<Superhero> superheroData = new ArrayList<>();
         Scanner sc = null;
         try {
-            sc = new Scanner(new File("Superhero.csv"), StandardCharsets.ISO_8859_1);
+            sc = new Scanner(file, StandardCharsets.ISO_8859_1);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -59,12 +65,13 @@ public class FileHandler {
             Superhero superhero = new Superhero(navn, ægteNavn, superKræft, oprettelsesÅr, styrke, erMenneske);
             superheroData.add(superhero);
 
-            database.addSuperhero(superhero);
         }
         sc.close();
-
+        return superheroData;
     }
+
 }
+
 
 
 

@@ -3,15 +3,15 @@ package domain;
 public class Superhero {
     private String navn;
     private String ægteNavn;
-    private String superKræft;
+    private String superkraft;
     private int oprettelsesÅr;
     private String styrke;
     private boolean erMenneske;
 
-    public Superhero(String navn, String ægteNavn, String superKræft, int oprettelsesÅr, String styrke, Boolean erMenneske) {
+    public Superhero(String navn, String ægteNavn, String superkraft, int oprettelsesÅr, String styrke, Boolean erMenneske) {
         this.navn = navn;
         this.ægteNavn = ægteNavn;
-        this.superKræft = superKræft;
+        this.superkraft = superkraft;
         this.oprettelsesÅr = oprettelsesÅr;
         this.styrke = styrke;
     }
@@ -28,8 +28,8 @@ public class Superhero {
         return erMenneske;
     }
 
-    public String getSuperKræft() {
-        return superKræft;
+    public String getSuperkraft() {
+        return superkraft;
     }
 
     public int getOprettelsesÅr() {
@@ -40,8 +40,8 @@ public class Superhero {
         return styrke;
     }
 
-    public void setSuperKræft(String superKræft) {
-        this.superKræft = superKræft;
+    public void setSuperkraft(String superkraft) {
+        this.superkraft = superkraft;
     }
 
     public void setOprettelsesÅr(int oprettelsesÅr) {
@@ -66,13 +66,13 @@ public class Superhero {
 
     @Override
     public String toString() {
-        return "Superhelt: " +
-                "Navn: " + navn + '\'' +
-                " Superheltens ægte navn: " + ægteNavn + '\'' +
-                " Superheltens superkræft: " + superKræft + '\'' +
-                " Året din superhelt fik superkræfter: " + oprettelsesÅr +
-                " Superheltens styrke: " + styrke + '\'' +
-                " Er din superhelt menneske: " + erMenneske;
+        return "Superhelt: " +  "\n" +
+                "Navn: " + navn + "\n" +
+                "Superheltens ægte navn: " + ægteNavn + "\n" +
+                "Superheltens superkræft: " + superkraft +  "\n" +
+                "Året din superhelt fik superkræfter: " + oprettelsesÅr +  "\n" +
+                "Superheltens styrke: " + styrke +  "\n" +
+                "Er din superhelt menneske: " + erMenneske;
 
     }
 }
